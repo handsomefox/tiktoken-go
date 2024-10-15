@@ -2,9 +2,10 @@ package tiktoken
 
 import (
 	"errors"
-	"github.com/dlclark/regexp2"
 	"strings"
 	"sync"
+
+	"github.com/dlclark/regexp2"
 )
 
 const ENDOFTEXT string = "<|endoftext|>"
