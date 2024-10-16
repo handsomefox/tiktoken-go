@@ -2,7 +2,6 @@ package tiktoken
 
 import (
 	"errors"
-	"strings"
 	"sync"
 
 	"github.com/dlclark/regexp2"
@@ -130,16 +129,7 @@ func o200k_base() (*Encoding, error) {
 		ENDOFTEXT:   199999,
 		ENDOFPROMPT: 200018,
 	}
-	pats := []string{
-		`[^\r\n\p{L}\p{N}]?[\p{Lu}\p{Lt}\p{Lm}\p{Lo}\p{M}]*[\p{Ll}\p{Lm}\p{Lo}\p{M}]+(?i:'s|'t|'re|'ve|'m|'ll|'d)?`,
-		`[^\r\n\p{L}\p{N}]?[\p{Lu}\p{Lt}\p{Lm}\p{Lo}\p{M}]+[\p{Ll}\p{Lm}\p{Lo}\p{M}]*(?i:'s|'t|'re|'ve|'m|'ll|'d)?`,
-		`\p{N}{1,3}`,
-		` ?[^\s\p{L}\p{N}]+[\r\n/]*`,
-		`\s*[\r\n]+`,
-		`\s+(?!\S)`,
-		`\s+`,
-	}
-	reg := regexp2.MustCompile(strings.Join(pats, "|"), 0)
+	reg := regexp2.MustCompile(`[^\r\n\p{L}\p{N}]?[\p{Lu}\p{Lt}\p{Lm}\p{Lo}\p{M}]*[\p{Ll}\p{Lm}\p{Lo}\p{M}]+(?i:'s|'t|'re|'ve|'m|'ll|'d)?|[^\r\n\p{L}\p{N}]?[\p{Lu}\p{Lt}\p{Lm}\p{Lo}\p{M}]+[\p{Ll}\p{Lm}\p{Lo}\p{M}]*(?i:'s|'t|'re|'ve|'m|'ll|'d)?|\p{N}{1,3}| ?[^\s\p{L}\p{N}]+[\r\n/]*|\s*[\r\n]+|\s+(?!\S)|\s+`, 0)
 	return &Encoding{
 		Name:           MODEL_O200K_BASE,
 		Pat:            reg,
