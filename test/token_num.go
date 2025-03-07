@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/pkoukk/tiktoken-go"
+	"github.com/handsomefox/tiktoken-go"
 )
 
 // main
@@ -70,8 +70,8 @@ func getTokenByEncoding(text string, encoding string) (num_tokens int) {
 
 // testTokenByModel
 func testTokenByModel(textList []string, modelList []string) {
-	for i := range len(textList) {
-		for j := range len(modelList) {
+	for i := range textList {
+		for j := range modelList {
 			fmt.Printf("text: %s, model: %s, token: %d\n", textList[i], modelList[j], getTokenByModel(textList[i], modelList[j]))
 		}
 	}
@@ -79,8 +79,8 @@ func testTokenByModel(textList []string, modelList []string) {
 
 // testTokenByEncoding
 func testTokenByEncoding(textList []string, encodingList []string) {
-	for i := range len(textList) {
-		for j := range len(encodingList) {
+	for i := range textList {
+		for j := range encodingList {
 			fmt.Printf("text: %s, encoding: %s, token: %d\n", textList[i], encodingList[j], getTokenByEncoding(textList[i], encodingList[j]))
 		}
 	}
