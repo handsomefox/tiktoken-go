@@ -44,10 +44,9 @@ func ReadTestFile() (textList []string, modelList []string, encodingList []strin
 
 // getTokenByModel
 func getTokenByModel(text string, model string) (num_tokens int) {
-
 	tkm, err := tiktoken.EncodingForModel(model)
 	if err != nil {
-		err = fmt.Errorf(": %v", err)
+		err = fmt.Errorf(": %w", err)
 		return
 	}
 
@@ -58,10 +57,9 @@ func getTokenByModel(text string, model string) (num_tokens int) {
 
 // getTokenByEncoding
 func getTokenByEncoding(text string, encoding string) (num_tokens int) {
-
 	tke, err := tiktoken.GetEncoding(encoding)
 	if err != nil {
-		err = fmt.Errorf(": %v", err)
+		err = fmt.Errorf(": %w", err)
 		return
 	}
 
@@ -72,8 +70,8 @@ func getTokenByEncoding(text string, encoding string) (num_tokens int) {
 
 // testTokenByModel
 func testTokenByModel(textList []string, modelList []string) {
-	for i := 0; i < len(textList); i++ {
-		for j := 0; j < len(modelList); j++ {
+	for i := range len(textList) {
+		for j := range len(modelList) {
 			fmt.Printf("text: %s, model: %s, token: %d\n", textList[i], modelList[j], getTokenByModel(textList[i], modelList[j]))
 		}
 	}
@@ -81,8 +79,8 @@ func testTokenByModel(textList []string, modelList []string) {
 
 // testTokenByEncoding
 func testTokenByEncoding(textList []string, encodingList []string) {
-	for i := 0; i < len(textList); i++ {
-		for j := 0; j < len(encodingList); j++ {
+	for i := range len(textList) {
+		for j := range len(encodingList) {
 			fmt.Printf("text: %s, encoding: %s, token: %d\n", textList[i], encodingList[j], getTokenByEncoding(textList[i], encodingList[j]))
 		}
 	}

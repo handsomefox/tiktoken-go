@@ -1,10 +1,11 @@
 package tiktoken
 
 import (
+	"unicode"
+
 	"github.com/dlclark/regexp2"
 	"github.com/dlclark/regexp2/helpers"
 	"github.com/dlclark/regexp2/syntax"
-	"unicode"
 )
 
 /*
@@ -90,34 +91,34 @@ func (reg_Engine) FindFirstChar(r *regexp2.Runner) bool {
 func (reg_Engine) Execute(r *regexp2.Runner) error {
 	atomic_stackpos := 0
 	alternation_starting_pos := 0
-	var charloop_starting_pos, charloop_ending_pos = 0, 0
-	var charloop_starting_pos1, charloop_ending_pos1 = 0, 0
+	charloop_starting_pos, charloop_ending_pos := 0, 0
+	charloop_starting_pos1, charloop_ending_pos1 := 0, 0
 	iteration := 0
-	var charloop_starting_pos2, charloop_ending_pos2 = 0, 0
+	charloop_starting_pos2, charloop_ending_pos2 := 0, 0
 	iteration1 := 0
 	loop_iteration := 0
 	startingStackpos := 0
-	var charloop_starting_pos3, charloop_ending_pos3 = 0, 0
-	var charloop_starting_pos4, charloop_ending_pos4 = 0, 0
+	charloop_starting_pos3, charloop_ending_pos3 := 0, 0
+	charloop_starting_pos4, charloop_ending_pos4 := 0, 0
 	iteration2 := 0
-	var charloop_starting_pos5, charloop_ending_pos5 = 0, 0
+	charloop_starting_pos5, charloop_ending_pos5 := 0, 0
 	iteration3 := 0
 	loop_iteration1 := 0
 	startingStackpos1 := 0
 	iteration4 := 0
 	iteration5 := 0
 	iteration6 := 0
-	var charloop_starting_pos6, charloop_ending_pos6 = 0, 0
+	charloop_starting_pos6, charloop_ending_pos6 := 0, 0
 	iteration7 := 0
 	iteration8 := 0
-	var charloop_starting_pos7, charloop_ending_pos7 = 0, 0
+	charloop_starting_pos7, charloop_ending_pos7 := 0, 0
 	iteration9 := 0
 	negativelookahead_starting_pos := 0
 	iteration10 := 0
 	pos := r.Runtextpos
 	matchStart := pos
 
-	var slice = r.Runtext[pos:]
+	slice := r.Runtext[pos:]
 
 	// Node: Atomic
 	// Atomic group.
@@ -727,7 +728,7 @@ AlternationMatch:
 	r.Runtextpos = pos
 	r.Capture(0, matchStart, pos)
 	// just to prevent an unused var error in certain regex's
-	var _ = slice
+	_ = slice
 	return nil
 }
 
@@ -792,22 +793,22 @@ func (reg_2_Engine) Execute(r *regexp2.Runner) error {
 	atomic_stackpos := 0
 	alternation_starting_pos := 0
 	alternation_starting_pos1 := 0
-	var charloop_starting_pos, charloop_ending_pos = 0, 0
+	charloop_starting_pos, charloop_ending_pos := 0, 0
 	iteration := 0
 	iteration1 := 0
 	iteration2 := 0
 	iteration3 := 0
-	var charloop_starting_pos1, charloop_ending_pos1 = 0, 0
+	charloop_starting_pos1, charloop_ending_pos1 := 0, 0
 	iteration4 := 0
 	iteration5 := 0
-	var charloop_starting_pos2, charloop_ending_pos2 = 0, 0
+	charloop_starting_pos2, charloop_ending_pos2 := 0, 0
 	iteration6 := 0
 	negativelookahead_starting_pos := 0
 	iteration7 := 0
 	pos := r.Runtextpos
 	matchStart := pos
 
-	var slice = r.Runtext[pos:]
+	slice := r.Runtext[pos:]
 
 	// Node: Atomic
 	// Atomic group.
@@ -1174,7 +1175,7 @@ AlternationMatch:
 	r.Runtextpos = pos
 	r.Capture(0, matchStart, pos)
 	// just to prevent an unused var error in certain regex's
-	var _ = slice
+	_ = slice
 	return nil
 }
 
@@ -1236,14 +1237,14 @@ func (reg_3_Engine) Execute(r *regexp2.Runner) error {
 	iteration := 0
 	iteration1 := 0
 	iteration2 := 0
-	var charloop_starting_pos, charloop_ending_pos = 0, 0
+	charloop_starting_pos, charloop_ending_pos := 0, 0
 	iteration3 := 0
 	negativelookahead_starting_pos := 0
 	iteration4 := 0
 	pos := r.Runtextpos
 	matchStart := pos
 
-	var slice = r.Runtext[pos:]
+	slice := r.Runtext[pos:]
 
 	// Node: Atomic
 	// Atomic group.
@@ -1532,7 +1533,7 @@ AlternationMatch:
 	r.Runtextpos = pos
 	r.Capture(0, matchStart, pos)
 	// just to prevent an unused var error in certain regex's
-	var _ = slice
+	_ = slice
 	return nil
 }
 
@@ -1549,7 +1550,7 @@ func init() {
 	regexp2.RegisterEngine("[^\\r\\n\\p{L}\\p{N}]?[\\p{Lu}\\p{Lt}\\p{Lm}\\p{Lo}\\p{M}]*[\\p{Ll}\\p{Lm}\\p{Lo}\\p{M}]+(?i:'s|'t|'re|'ve|'m|'ll|'d)?|[^\\r\\n\\p{L}\\p{N}]?[\\p{Lu}\\p{Lt}\\p{Lm}\\p{Lo}\\p{M}]+[\\p{Ll}\\p{Lm}\\p{Lo}\\p{M}]*(?i:'s|'t|'re|'ve|'m|'ll|'d)?|\\p{N}{1,3}| ?[^\\s\\p{L}\\p{N}]+[\\r\\n/]*|\\s*[\\r\\n]+|\\s+(?!\\S)|\\s+", regexp2.None, &reg_Engine{})
 	regexp2.RegisterEngine("(?i:'s|'t|'re|'ve|'m|'ll|'d)|[^\\r\\n\\p{L}\\p{N}]?\\p{L}+|\\p{N}{1,3}| ?[^\\s\\p{L}\\p{N}]+[\\r\\n]*|\\s*[\\r\\n]+|\\s+(?!\\S)|\\s+", regexp2.None, &reg_2_Engine{})
 	regexp2.RegisterEngine("'s|'t|'re|'ve|'m|'ll|'d| ?\\p{L}+| ?\\p{N}+| ?[^\\s\\p{L}\\p{N}]+|\\s+(?!\\S)|\\s+", regexp2.None, &reg_3_Engine{})
-	var _ = helpers.Min
-	var _ = syntax.NewCharSetRuntime
-	var _ = unicode.IsDigit
+	_ = helpers.Min
+	_ = syntax.NewCharSetRuntime
+	_ = unicode.IsDigit
 }

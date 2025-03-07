@@ -7,11 +7,13 @@ import (
 	"github.com/dlclark/regexp2"
 )
 
-const ENDOFTEXT string = "<|endoftext|>"
-const FIM_PREFIX string = "<|fim_prefix|>"
-const FIM_MIDDLE string = "<|fim_middle|>"
-const FIM_SUFFIX string = "<|fim_suffix|>"
-const ENDOFPROMPT string = "<|endofprompt|>"
+const (
+	ENDOFTEXT   string = "<|endoftext|>"
+	FIM_PREFIX  string = "<|fim_prefix|>"
+	FIM_MIDDLE  string = "<|fim_middle|>"
+	FIM_SUFFIX  string = "<|fim_suffix|>"
+	ENDOFPROMPT string = "<|endofprompt|>"
+)
 
 const (
 	MODEL_O200K_BASE  string = "o200k_base"
@@ -73,8 +75,10 @@ var MODEL_PREFIX_TO_ENCODING = map[string]string{
 	"gpt-3.5-turbo-": MODEL_CL100K_BASE, // e.g, gpt-3.5-turbo-0301, -0401, etc.
 }
 
-var encodingMap map[string]*Encoding
-var l *sync.Mutex
+var (
+	encodingMap map[string]*Encoding
+	l           *sync.Mutex
+)
 
 func init() {
 	encodingMap = make(map[string]*Encoding)

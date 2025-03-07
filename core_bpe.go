@@ -28,7 +28,7 @@ func NewCoreBPE(encoder map[string]int, specialTokensEncoder map[string]int, reg
 	}
 	specialRegex, err := regexp2.Compile(strings.Join(specialRegexStrs, "|"), regexp2.None)
 	if err != nil {
-		return nil, fmt.Errorf("error compiling special regex: %s", err)
+		return nil, fmt.Errorf("error compiling special regex: %w", err)
 	}
 
 	decoder := make(map[int]string, len(encoder))

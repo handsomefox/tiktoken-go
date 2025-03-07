@@ -74,7 +74,7 @@ func (t *Tiktoken) Encode(text string, allowedSpecial []string, disallowedSpecia
 		specialRegex := t.SpecialTokenRegex(disallowedSpecialSet)
 		m := findRegex2StringMatch(text, specialRegex)
 		if m != "" {
-			panic(fmt.Sprintf("text contains disallowed special token %s", m))
+			panic("text contains disallowed special token " + m)
 		}
 	}
 

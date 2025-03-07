@@ -21,7 +21,7 @@ func bytePairMerge[T any](piece []byte, ranks map[string]int, f func(start, end 
 		return -1 // use -1 to represent None
 	}
 
-	for i := 0; i < len(parts)-2; i++ {
+	for i := range len(parts) - 2 {
 		if rank := getRank(i, 0); rank >= 0 {
 			parts[i][1] = rank
 		}
@@ -29,7 +29,7 @@ func bytePairMerge[T any](piece []byte, ranks map[string]int, f func(start, end 
 
 	for len(parts) > 1 {
 		minRank, minIdx := math.MaxInt, -1
-		for i := 0; i < len(parts)-1; i++ {
+		for i := range len(parts) - 1 {
 			if parts[i][1] < minRank {
 				minRank, minIdx = parts[i][1], i
 			}
